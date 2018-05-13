@@ -18,7 +18,7 @@ There's a 3 steps to make it work:
 General setter implementation:
 
 ```objc
-+ (dvClassPropertySetterBlock)setterBlockForGetterSelector:(SEL)getterSelector {
++ (dvPropertySetterBlock)setterBlockForTarget:(id)target getterSelector:(SEL)getterSelector {
     return ^(id blockSelf, id value) {
         // your code here
     };
@@ -28,7 +28,7 @@ General setter implementation:
 General getter implementation:
 
 ```objc
-+ (dvClassPropertyGetterBlock)getterBlockForSelector:(SEL)getterSelector {
++ (dvPropertyGetterBlock)getterBlockForTarget:(id)target getterSelector:(SEL)getterSelector {
     return ^id(id blockSelf) {
         return // your code here
     };
