@@ -1,6 +1,9 @@
 # OS X
 .DS_Store
 
+# Cocoapods
+Example/Pods/*
+
 # Xcode
 build/
 *.pbxuser
