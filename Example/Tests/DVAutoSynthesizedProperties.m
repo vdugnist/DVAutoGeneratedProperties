@@ -11,8 +11,8 @@
 
 @implementation DVAutoSynthesizedProperties
 
-+ (dvClassPropertySetterBlock)setterBlockForGetterSelector:(SEL)getterSelector {
-    objc_property_t property = classPropertyForSelector(self, getterSelector);
++ (dvPropertySetterBlock)setterBlockForTarget:(id)target getterSelector:(SEL)getterSelector {
+    objc_property_t property = propertyForSelector(target, getterSelector);
     objc_AssociationPolicy policy = associationPolicyForProperty(property);
     
     return ^(id blockSelf, id value){
@@ -20,7 +20,7 @@
     };
 }
 
-+ (dvClassPropertyGetterBlock)getterBlockForSelector:(SEL)getterSelector {
++ (dvPropertyGetterBlock)getterBlockForTarget:(id)target getterSelector:(SEL)getterSelector {
     return ^id(id blockSelf) {
         return objc_getAssociatedObject(blockSelf, getterSelector);
     };

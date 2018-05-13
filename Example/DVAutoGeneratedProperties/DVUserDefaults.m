@@ -12,13 +12,13 @@
 
 @dynamic savedText;
 
-+ (dvClassPropertySetterBlock)setterBlockForGetterSelector:(SEL)getterSelector {
++ (dvPropertySetterBlock)setterBlockForTarget:(id)target getterSelector:(SEL)getterSelector {
     return ^(id blockSelf, id value) {
         [[NSUserDefaults standardUserDefaults] setObject:value forKey:NSStringFromSelector(getterSelector)];
     };
 }
 
-+ (dvClassPropertyGetterBlock)getterBlockForSelector:(SEL)getterSelector {
++ (dvPropertyGetterBlock)getterBlockForTarget:(id)target getterSelector:(SEL)getterSelector {
     return ^id(id blockSelf) {
         return [[NSUserDefaults standardUserDefaults] objectForKey:NSStringFromSelector(getterSelector)];
     };
